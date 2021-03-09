@@ -24,7 +24,9 @@ export class AppComponent {
 
     formdata.append("email", "rodrigocardozop@gmail.com");
     formdata.append("subject", "Teste desenv");
-    formdata.append("priority", "3");
+
+    //1,2,3,4 - baixa, média, alta, urgente
+    formdata.append("priority", "4");
     formdata.append("status", "2");
     //https://medgrupo.freshdesk.com/api/v2/groups?per_page=100
     formdata.append("group_id", "12000006437");
