@@ -1,6 +1,7 @@
 import { Component, VERSION } from "@angular/core";
 import { Http, Headers, RequestOptions } from "@angular/http";
 import "rxjs/add/operator/map";
+import { Status, Types, Priority, Source } from "./freshdesk/freshdesk.commons";
 
 @Component({
   selector: "my-app",
@@ -15,27 +16,34 @@ export class AppComponent {
   constructor(private http: Http) {}
 
   createTicket(file: any) {
-    let formdata = new FormData();
+    //https://medgrupo.freshdesk.com/api/v2/ticket_fields
+    //https://medgrupo.freshdesk.com/api/v2/tickets/613020/conversations
 
-    formdata.append("description", "Descrição de teste");
+    let obj = {
+      source: Source.Email,
+      description: "Descrição de teste",
+      name: "Cardozo",
+      email: "rod_cardozo@hotmail.com",
+      type: Types.reclamacao,
+      subject: "Teste desenv",
+      priority: Priority.Alta,
+      status: Status.Open,
+      group_id: 12000006437,
+      custom_fields: { cf_matricula: "214669" }
+    };
+    // console.log(file.files[0]);
+    // if (file.files[0] != undefined) {
+    //   obj["attachments"] = file.files;
+    // }
 
-    //Reclamação,Solicitação,Informação,Elogio,Sugestão
-    formdata.append("type", "Informação");
-
-    formdata.append("email", "rodrigocardozop@gmail.com");
-    formdata.append("subject", "Teste desenv");
-
-    //1,2,3,4 - baixa, média, alta, urgente
-    formdata.append("priority", "1");
-    formdata.append("status", "2");
+    // formdata.append("cc_emails", []]);
     //https://medgrupo.freshdesk.com/api/v2/groups?per_page=100
-    formdata.append("group_id", "12000006437");
 
-    formdata.append("attachments[]", file.files[0]);
-    // formdata.append("custom_fields[cf_test_ddpp_1]", "First Choice");
-    // formdata.append("custom_fields[cf_test_service_worker]", "First Choice");
+    //formdata.append("attachments[]", );
+    //formdata.append("custom_fields[matricula]", "123456789");
+    //formdata.append("custom_fields[cf_test_service_worker]", "First Choice");
 
-    this.create(formdata).subscribe(
+    this.create(obj).subscribe(
       (res: any) => {
         this.result = "SUCCESS";
         this.status = res.status;
@@ -54,9 +62,10 @@ export class AppComponent {
     );
   }
 
-  create(data: FormData) {
-    let yourdomain = "medgrupo"; // Your freshdesk domain name. Ex., yourcompany
-    let api_key = "z5Dayu0bzRgkw9x3PuE"; // Ref: https://support.freshdesk.com/support/solutions/articles/215517-how-to-find-your-api-key
+  create(data) {
+    let yourdomain = "medgrupo";
+    let api_key = "z5Dayu0bzRgkw9x3PuE";
+    // Ref:https://support.freshdesk.com/support/solutions/articles/215517-how-to-find-your-api-key
     let url = "https://" + yourdomain + ".freshdesk.com/api/v2/tickets";
 
     let headers = new Headers({
