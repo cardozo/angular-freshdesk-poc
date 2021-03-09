@@ -1,0 +1,26 @@
+<h1>
+  Hello this is a test app
+</h1>
+<input type="file" #file />
+<button (click)="createTicket(file)">Create Ticket</button>
+<br /><br />
+<table cellspacing="10">
+  <tr>
+    <td><b>Result</b></td>
+    <td>
+      <div id="result">{{ result }}</div>
+    </td>
+  </tr>
+  <tr>
+    <td><b>Code</b></td>
+    <td>
+      <div id="code">{{ status }}</div>
+    </td>
+  </tr>
+  <tr>
+    <td><b>Response</b></td>
+    <td>
+      <div id="response" [innerHTML]="text"></div>
+    </td>
+  </tr>
+</table>
