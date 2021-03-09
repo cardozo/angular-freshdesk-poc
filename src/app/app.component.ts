@@ -17,6 +17,8 @@ export class AppComponent {
 
   createTicket(file: any) {
     //https://medgrupo.freshdesk.com/api/v2/ticket_fields
+
+    //https://medgrupo.freshdesk.com/api/v2/tickets/613020/
     //https://medgrupo.freshdesk.com/api/v2/tickets/613020/conversations
 
     let obj = {
