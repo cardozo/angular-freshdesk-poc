@@ -16,14 +16,22 @@ export class AppComponent {
 
   createTicket(file: any) {
     let formdata = new FormData();
+
     formdata.append("description", "Descrição de teste");
+
+    //Reclamação,Solicitação,Informação,Elogio,Sugestão
+    formdata.append("type", "Informação");
+
     formdata.append("email", "rodrigocardozop@gmail.com");
     formdata.append("subject", "Teste desenv");
-    formdata.append("priority", "2");
+    formdata.append("priority", "3");
     formdata.append("status", "2");
+    //https://medgrupo.freshdesk.com/api/v2/groups?per_page=100
+    formdata.append("group_id", "12000006437");
+
     formdata.append("attachments[]", file.files[0]);
-    formdata.append("custom_fields[cf_test_ddpp_1]", "First Choice");
-    formdata.append("custom_fields[cf_test_service_worker]", "First Choice");
+    // formdata.append("custom_fields[cf_test_ddpp_1]", "First Choice");
+    // formdata.append("custom_fields[cf_test_service_worker]", "First Choice");
 
     this.create(formdata).subscribe(
       (res: any) => {
