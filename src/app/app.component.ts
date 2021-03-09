@@ -26,7 +26,7 @@ export class AppComponent {
     formdata.append("subject", "Teste desenv");
 
     //1,2,3,4 - baixa, média, alta, urgente
-    formdata.append("priority", "4");
+    formdata.append("priority", "1");
     formdata.append("status", "2");
     //https://medgrupo.freshdesk.com/api/v2/groups?per_page=100
     formdata.append("group_id", "12000006437");
@@ -56,7 +56,7 @@ export class AppComponent {
 
   create(data: FormData) {
     let yourdomain = "medgrupo"; // Your freshdesk domain name. Ex., yourcompany
-    let api_key = "5ol1fRFHE3bCdn3vv70s"; // Ref: https://support.freshdesk.com/support/solutions/articles/215517-how-to-find-your-api-key
+    let api_key = "z5Dayu0bzRgkw9x3PuE"; // Ref: https://support.freshdesk.com/support/solutions/articles/215517-how-to-find-your-api-key
     let url = "https://" + yourdomain + ".freshdesk.com/api/v2/tickets";
 
     let headers = new Headers({
