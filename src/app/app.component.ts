@@ -16,9 +16,9 @@ export class AppComponent {
 
   createTicket(file: any) {
     let formdata = new FormData();
-    formdata.append("description", "sample description");
-    formdata.append("email", "test@mydomain.com");
-    formdata.append("subject", "Test subject");
+    formdata.append("description", "Descrição de teste");
+    formdata.append("email", "rodrigocardozop@gmail.com");
+    formdata.append("subject", "Teste desenv");
     formdata.append("priority", "2");
     formdata.append("status", "2");
     formdata.append("attachments[]", file.files[0]);
@@ -45,8 +45,8 @@ export class AppComponent {
   }
 
   create(data: FormData) {
-    let yourdomain = "mydomain"; // Your freshdesk domain name. Ex., yourcompany
-    let api_key = "key"; // Ref: https://support.freshdesk.com/support/solutions/articles/215517-how-to-find-your-api-key
+    let yourdomain = "medgrupo"; // Your freshdesk domain name. Ex., yourcompany
+    let api_key = "5ol1fRFHE3bCdn3vv70s"; // Ref: https://support.freshdesk.com/support/solutions/articles/215517-how-to-find-your-api-key
     let url = "https://" + yourdomain + ".freshdesk.com/api/v2/tickets";
 
     let headers = new Headers({
