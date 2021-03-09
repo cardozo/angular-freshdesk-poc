@@ -1,3 +1,5 @@
+import { Http, Headers, RequestOptions } from "@angular/http";
+
 export enum Priority {
   Baixa,
   Media,
@@ -11,6 +13,18 @@ export class Types {
   static informacao: string = "Informação";
   static elogio: string = "Elogio";
   static sugestao: string = "Sugestão";
+}
+
+//Ref:https://support.freshdesk.com/support/solutions/articles/215517-how-to-find-your-api-key
+export class FreshdeskConfig {
+  static domain = "medgrupo";
+  static api_key = "z5Dayu0bzRgkw9x3PuE";
+  static baseURL =
+    "https://" + FreshdeskConfig.domain + ".freshdesk.com/api/v2/";
+  static headers = new Headers({
+    Authorization: "Basic " + btoa(FreshdeskConfig.api_key + ":x")
+  });
+  static options = new RequestOptions({ headers: FreshdeskConfig.headers });
 }
 
 export enum Status {
