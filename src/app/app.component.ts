@@ -15,15 +15,14 @@ import {
   styleUrls: ["./app.component.css"]
 })
 
-// desenho processo 
+// desenho processo
 // https://app.diagrams.net/#G1xtISDhjb10WY-TI3ZOeQugYgetH4dTU5
-
 export class AppComponent {
   status: number;
   text: string;
   result: string;
   ticketId: number;
-  //requester_id: 12041765972
+  requesterId: number;
 
   constructor(private http: Http) {}
 
@@ -65,6 +64,7 @@ export class AppComponent {
         console.log(body);
         console.log(res);
         this.ticketId = body.id;
+        this.requesterId = body.requester_id;
       },
       (error: any) => {
         this.result = "ERROR";
@@ -87,7 +87,6 @@ export class AppComponent {
         this.status = res.status;
         this.text = JSON.stringify(res._body, null, "<br/>");
         let body = JSON.parse(res._body);
-        this.ticketId = body.id;
       },
       (error: any) => {
         this.result = "ERROR";
@@ -104,10 +103,10 @@ export class AppComponent {
 
   //colocar numa service
   createReplyHTTP() {
-    let url = FreshdeskConfig.baseURL + "tickets/" + 613260 + "/reply";
+    let url = FreshdeskConfig.baseURL + "tickets/" + this.ticketId + "/reply";
 
     let data = {
-      //from_email: "rod_cardozo@hotmail.com",
+      user_id: this.requesterId,
       body: "teste de réplica externa"
     };
 
