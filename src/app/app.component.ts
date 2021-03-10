@@ -19,11 +19,11 @@ export class AppComponent {
   text: string;
   result: string;
   ticketId: number;
+  //requester_id: 12041765972
 
   constructor(private http: Http) {}
 
   create(file: any) {
-
     //https://medgrupo.freshdesk.com/a/tickets/filters/all_tickets
     //https://medgrupo.freshdesk.com/a/tickets/613248
     //https://developers.freshdesk.com/api/#reply_ticket
@@ -35,10 +35,10 @@ export class AppComponent {
 
     //criar entidade
     let obj = {
-      source: Source.Email,
+      source: Source.Portal,
       description: "Descrição de teste",
       name: "Cardozo",
-      email: "rod_cardozo@hotmail.com",
+      email: "testecardozo@hotmail.com",
       type: Types.reclamacao,
       subject: "Teste desenv",
       priority: Priority.Alta,
@@ -46,6 +46,7 @@ export class AppComponent {
       group_id: 12000006437,
       custom_fields: { cf_matricula: "214669" }
     };
+
     // console.log(file.files[0]);
     // if (file.files[0] != undefined) {
     //   obj["attachments"] = file.files;
@@ -53,6 +54,31 @@ export class AppComponent {
 
     this.createTicket(obj).subscribe(
       (res: any) => {
+        this.result = "SUCCESS";
+        this.status = res.status;
+        this.text = JSON.stringify(res._body, null, "<br/>");
+        let body = JSON.parse(res._body);
+        console.log(body);
+        console.log(res);
+        this.ticketId = body.id;
+      },
+      (error: any) => {
+        this.result = "ERROR";
+        this.status = error.status;
+        this.text =
+          "Error Message : <b style='color: red'>" +
+          error._body +
+          "</b>.<br/> Your X-Request-Id is : <b>" +
+          this.getRequestId(error) +
+          "</b>. Please contact support@freshdesk.com with this id for more information.";
+      }
+    );
+  }
+
+  createReply(file) {
+    this.createReplyHTTP().subscribe(
+      (res: any) => {
+        console.log(res);
         this.result = "SUCCESS";
         this.status = res.status;
         this.text = JSON.stringify(res._body, null, "<br/>");
@@ -73,7 +99,18 @@ export class AppComponent {
   }
 
   //colocar numa service
-  createReply(file: any) {}
+  createReplyHTTP() {
+    let url = FreshdeskConfig.baseURL + "tickets/" + 613260 + "/reply";
+
+    let data = {
+      //from_email: "rod_cardozo@hotmail.com",
+      body: "teste de réplica externa"
+    };
+
+    return this.http
+      .post(url, data, FreshdeskConfig.options)
+      .map((res: any) => res);
+  }
 
   //colocar numa service
   createTicket(data) {
