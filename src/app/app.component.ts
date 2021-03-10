@@ -23,6 +23,11 @@ export class AppComponent {
   constructor(private http: Http) {}
 
   create(file: any) {
+
+    //https://medgrupo.freshdesk.com/a/tickets/filters/all_tickets
+    //https://medgrupo.freshdesk.com/a/tickets/613248
+    //https://developers.freshdesk.com/api/#reply_ticket
+
     //https://medgrupo.freshdesk.com/api/v2/ticket_fields
 
     //https://medgrupo.freshdesk.com/api/v2/tickets/613020/
