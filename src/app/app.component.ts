@@ -14,6 +14,10 @@ import {
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
+
+// desenho processo 
+// https://app.diagrams.net/#G1xtISDhjb10WY-TI3ZOeQugYgetH4dTU5
+
 export class AppComponent {
   status: number;
   text: string;
