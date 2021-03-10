@@ -36,6 +36,8 @@ export class AppComponent {
     //https://medgrupo.freshdesk.com/api/v2/tickets/613020/
     //https://medgrupo.freshdesk.com/api/v2/tickets/613020/conversations
 
+    //para identificação usarmos o requester id que se torna o user_id, e também o email, não tendo API usar email somente
+
     //criar entidade
     let obj = {
       source: Source.Portal,
