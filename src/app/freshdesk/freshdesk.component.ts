@@ -18,6 +18,8 @@ import {
 
 //https://medgrupo.freshdesk.com/a/tickets/filters/all_tickets
 //https://medgrupo.freshdesk.com/a/tickets/613248
+//https://developers.freshdesk.com/api/#reply_ticket
+//https://medgrupo.freshdesk.com/api/v2/ticket_fields
 //https://medgrupo.freshdesk.com/api/v2/tickets/613020/
 //https://medgrupo.freshdesk.com/api/v2/tickets/613020/conversations
 //
@@ -49,7 +51,10 @@ export class FreshdeskComponent {
       custom_fields: {
         cf_matricula: "214669",
         cf_ambiente:
-          "AppVersion: 7.5.2 AppId: 17 Device: 3 OS: iOS; OSVersion: 12.4.9 uuid: 8561BC1F-1316-4E6C-9547-8BAE7B92B6E5"
+          "AppVersion: 7.5.2 AppId: 17 Device: 3 OS: iOS; OSVersion: 12.4.9 uuid: 8561BC1F-1316-4E6C-9547-8BAE7B92B6E5",
+        cf_1: "MEDSOFT Pro",
+        cf_11: "Login",
+        cf_111: "Erro de Senha"
       }
     };
 
