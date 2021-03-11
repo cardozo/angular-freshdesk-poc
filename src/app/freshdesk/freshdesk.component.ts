@@ -33,11 +33,12 @@ export class FreshdeskComponent {
   createTicket(file: any = null) {
     let ticket: Ticket = {
       source: Source.Portal,
-      description: "Descrição de teste",
+      description:
+        "Descrição de teste para relato detalhado do problema do aluno",
       name: "Cardozo",
       email: "testecardozo@hotmail.com",
       type: Types.reclamacao,
-      subject: "Teste desenv",
+      subject: "Título de teste de pedido Desenv",
       priority: Priority.Alta,
       status: Status.Open,
       group_id: 12000006437,
