@@ -18,8 +18,6 @@ import {
 
 //https://medgrupo.freshdesk.com/a/tickets/filters/all_tickets
 //https://medgrupo.freshdesk.com/a/tickets/613248
-//https://developers.freshdesk.com/api/#reply_ticket
-//https://medgrupo.freshdesk.com/api/v2/ticket_fields
 //https://medgrupo.freshdesk.com/api/v2/tickets/613020/
 //https://medgrupo.freshdesk.com/api/v2/tickets/613020/conversations
 //
@@ -44,7 +42,7 @@ export class FreshdeskComponent {
       name: "Cardozo",
       email: "testecardozo@hotmail.com",
       type: Types.reclamacao,
-      subject: "Título de teste de pedido Desenv",
+      subject: "Título de teste Desenv",
       priority: Priority.Alta,
       status: Status.Open,
       group_id: 12000006437,
