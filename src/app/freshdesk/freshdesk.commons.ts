@@ -23,10 +23,10 @@ export class Types {
 }
 
 export enum Priority {
-  Baixa,
-  Media,
-  Alta,
-  Urgente
+  Baixa = 1,
+  Media = 2,
+  Alta = 3,
+  Urgente = 4
 }
 
 export enum Status {

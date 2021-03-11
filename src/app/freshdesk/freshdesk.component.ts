@@ -22,8 +22,8 @@ import {
 //https://medgrupo.freshdesk.com/api/v2/ticket_fields
 //https://medgrupo.freshdesk.com/api/v2/tickets/613020/
 //https://medgrupo.freshdesk.com/api/v2/tickets/613020/conversations
+//
 export class FreshdeskComponent {
-  
   status: number;
   text: string;
   result: string;
