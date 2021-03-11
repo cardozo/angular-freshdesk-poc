@@ -6,7 +6,8 @@ import {
   Types,
   Priority,
   Source,
-  FreshdeskConfig, Ticket
+  FreshdeskConfig,
+  Ticket
 } from "./freshdesk/freshdesk.commons";
 
 @Component({
@@ -39,7 +40,7 @@ export class AppComponent {
     //para identificação usarmos o requester id que se torna o user_id, e também o email, não tendo API usar email somente
 
     //criar entidade
-    let ticket:Ticket = {
+    let ticket: Ticket = {
       source: Source.Portal,
       description: "Descrição de teste",
       name: "Cardozo",

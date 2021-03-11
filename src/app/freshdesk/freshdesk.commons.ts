@@ -6,11 +6,12 @@ export class FreshdeskConfig {
   static api_key = "z5Dayu0bzRgkw9x3PuE";
   static baseURL =
     "https://" + FreshdeskConfig.domain + ".freshdesk.com/api/v2/";
-  static headers = new Headers({
-    Authorization: "Basic " + btoa(FreshdeskConfig.api_key + ":x"),
-    "Content-type": "multipart/form-data"
+
+  static options = new RequestOptions({
+    headers: new Headers({
+      Authorization: "Basic " + btoa(FreshdeskConfig.api_key + ":x")
+    })
   });
-  static options = new RequestOptions({ headers: FreshdeskConfig.headers });
 }
 
 export class Types {

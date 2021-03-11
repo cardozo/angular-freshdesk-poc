@@ -9,8 +9,9 @@ import {
   FreshdeskConfig,
   Ticket
 } from "./freshdesk.commons";
+import { Observable } from "rxjs";
 
-//@Injectable({ providedIn: 'root' })
+// @Injectable({ providedIn: "root" })
 export class FreshdeskService {
   constructor(
     private http: HttpClient,
@@ -21,15 +22,17 @@ export class FreshdeskService {
   createReplyHTTP(data, ticketId) {
     let url = FreshdeskConfig.baseURL + "tickets/" + ticketId + "/reply";
 
-    return this.http
-      .post(url, data, FreshdeskConfig.options)
-      .map((res: any) => res);
+    // return this.http
+    //   .post(url, data, FreshdeskConfig.options)
+    //   .map((res: any) => res);
   }
 
   createTicket(data) {
-    let url = FreshdeskConfig.baseURL + "tickets";
-    return this.http
-      .post(url, data, FreshdeskConfig.options)
-      .map((res: any) => res);
+    console.log("create ticket");
+
+    // let url = FreshdeskConfig.baseURL + "tickets";
+    // return this.http
+    //   .post(url, data, FreshdeskConfig.options)
+    //   .map((res: any) => res);
   }
 }
