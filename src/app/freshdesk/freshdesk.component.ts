@@ -1,6 +1,7 @@
 import { Component, VERSION } from "@angular/core";
 import { Http, Headers, RequestOptions } from "@angular/http";
 import "rxjs/add/operator/map";
+import { FreshDeskApiService } from "./freshdesk.api";
 import {
   FreshdeskConfig,
   Priority,
@@ -22,13 +23,18 @@ import {
 //https://medgrupo.freshdesk.com/api/v2/tickets/613020/
 //https://medgrupo.freshdesk.com/api/v2/tickets/613020/conversations
 export class FreshdeskComponent {
+  
   status: number;
   text: string;
   result: string;
+
   ticketId: number;
   requesterId: number;
 
-  constructor(private http: Http) {}
+  constructor(
+    private http: Http,
+    private freshDeskApiService: FreshDeskApiService
+  ) {}
 
   createTicket(file: any = null) {
     let ticket: Ticket = {
@@ -49,7 +55,7 @@ export class FreshdeskComponent {
       }
     };
 
-    this.createTicketService(ticket).subscribe(
+    this.freshDeskApiService.setTicket(ticket).subscribe(
       (res: any) => {
         this.result = "SUCCESS";
         this.status = res.status;
@@ -67,7 +73,7 @@ export class FreshdeskComponent {
           "Error Message : <b style='color: red'>" +
           error._body +
           "</b>.<br/> Your X-Request-Id is : <b>" +
-          this.getRequestId(error) +
+          this.freshDeskApiService.getRequestId(error) +
           "</b>. Please contact support@freshdesk.com with this id for more information.";
       }
     );
@@ -79,7 +85,7 @@ export class FreshdeskComponent {
       body: "teste de réplica externa"
     };
 
-    this.createReplyService(data).subscribe(
+    this.freshDeskApiService.setReply(data, this.ticketId).subscribe(
       (res: any) => {
         console.log(res);
         this.result = "SUCCESS";
@@ -94,34 +100,9 @@ export class FreshdeskComponent {
           "Error Message : <b style='color: red'>" +
           error._body +
           "</b>.<br/> Your X-Request-Id is : <b>" +
-          this.getRequestId(error) +
+          this.freshDeskApiService.getRequestId(error) +
           "</b>. Please contact support@freshdesk.com with this id for more information.";
       }
     );
-  }
-
-  createReplyService(data) {
-    let url = FreshdeskConfig.baseURL + "tickets/" + this.ticketId + "/reply";
-
-    return this.http
-      .post(url, data, FreshdeskConfig.options)
-      .map((res: any) => res);
-  }
-
-  createTicketService(data) {
-    let url = FreshdeskConfig.baseURL + "tickets";
-    return this.http
-      .post(url, data, FreshdeskConfig.options)
-      .map((res: any) => res);
-  }
-
-  getRequestId(error: any) {
-    let xRequestId;
-    error.headers._headers.forEach((header: any, key: any) => {
-      if (key == "x-request-id") {
-        xRequestId = header[0];
-      }
-    });
-    return xRequestId;
   }
 }
