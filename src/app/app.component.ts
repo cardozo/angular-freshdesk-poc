@@ -26,7 +26,7 @@ export class AppComponent {
 
   constructor(private http: Http) {}
 
-  create(file: any) {
+  create(file: any = null) {
     //https://medgrupo.freshdesk.com/a/tickets/filters/all_tickets
     //https://medgrupo.freshdesk.com/a/tickets/613248
     //https://developers.freshdesk.com/api/#reply_ticket
@@ -52,14 +52,16 @@ export class AppComponent {
       custom_fields: {
         cf_matricula: "214669",
         cf_ambiente:
-          "appVersion: 7.5.2 idAplicacao: 17 idDevice: 3 platform: iOS uuid: 8561BC1F-1316-4E6C-9547-8BAE7B92B6E5 osversion: 12.4.9"
+          "AppVersion: 7.5.2 AppId: 17 Device: 3 OS: iOS; OSVersion: 12.4.9 uuid: 8561BC1F-1316-4E6C-9547-8BAE7B92B6E5"
       }
     };
 
     // console.log(file.files[0]);
     // if (file.files[0] != undefined) {
-    //   obj["attachments"] = file.files;
+    //   console.log(obj);
     // }
+
+    //multipart/form-data
 
     this.createTicket(obj).subscribe(
       (res: any) => {
@@ -85,7 +87,7 @@ export class AppComponent {
     );
   }
 
-  createReply(file) {
+  createReply(file = null) {
     this.createReplyHTTP().subscribe(
       (res: any) => {
         console.log(res);

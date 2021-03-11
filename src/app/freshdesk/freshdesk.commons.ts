@@ -22,7 +22,8 @@ export class FreshdeskConfig {
   static baseURL =
     "https://" + FreshdeskConfig.domain + ".freshdesk.com/api/v2/";
   static headers = new Headers({
-    Authorization: "Basic " + btoa(FreshdeskConfig.api_key + ":x")
+    Authorization: "Basic " + btoa(FreshdeskConfig.api_key + ":x"),
+    "Content-type": "multipart/form-data"
   });
   static options = new RequestOptions({ headers: FreshdeskConfig.headers });
 }
