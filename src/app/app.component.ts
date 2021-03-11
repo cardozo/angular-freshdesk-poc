@@ -56,13 +56,6 @@ export class AppComponent {
       }
     };
 
-    // console.log(file.files[0]);
-    // if (file.files[0] != undefined) {
-    //   console.log(obj);
-    // }
-
-    //multipart/form-data
-
     this.createTicket(obj).subscribe(
       (res: any) => {
         this.result = "SUCCESS";
