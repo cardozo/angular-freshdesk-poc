@@ -1,0 +1,27 @@
+<h1>
+  POC Integração Medsoft Freshdesk
+</h1>
+<!-- <input type="file" #file /> -->
+<button (click)="createTicket()">Create Ticket</button>
+<button (click)="createReply()">Create a reply</button>
+<br /><br />
+<table cellspacing="10">
+  <tr>
+    <td><b>Result</b></td>
+    <td>
+      <div id="result">{{ result }}</div>
+    </td>
+  </tr>
+  <tr>
+    <td><b>Code</b></td>
+    <td>
+      <div id="code">{{ status }}</div>
+    </td>
+  </tr>
+  <tr>
+    <td><b>Response</b></td>
+    <td>
+      <div id="response" [innerHTML]="text"></div>
+    </td>
+  </tr>
+</table>

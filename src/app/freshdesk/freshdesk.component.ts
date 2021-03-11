@@ -2,18 +2,17 @@ import { Component, VERSION } from "@angular/core";
 import { Http, Headers, RequestOptions } from "@angular/http";
 import "rxjs/add/operator/map";
 import {
-  Status,
-  Types,
+  FreshdeskConfig,
   Priority,
   Source,
-  FreshdeskConfig,
-  Ticket
-} from "./freshdesk/freshdesk.commons";
+  Status,
+  Ticket,
+  Types
+} from "./freshdesk.commons";
 
 @Component({
   selector: "freshdesk",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  templateUrl: "./freshdesk.component.html"
 })
 
 //https://medgrupo.freshdesk.com/a/tickets/filters/all_tickets
@@ -22,7 +21,7 @@ import {
 //https://medgrupo.freshdesk.com/api/v2/ticket_fields
 //https://medgrupo.freshdesk.com/api/v2/tickets/613020/
 //https://medgrupo.freshdesk.com/api/v2/tickets/613020/conversations
-export class AppComponent {
+export class FreshdeskComponent {
   status: number;
   text: string;
   result: string;
