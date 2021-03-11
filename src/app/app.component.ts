@@ -11,13 +11,17 @@ import {
 } from "./freshdesk/freshdesk.commons";
 
 @Component({
-  selector: "my-app",
+  selector: "freshdesk",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
 
-// desenho processo
-// https://app.diagrams.net/#G1xtISDhjb10WY-TI3ZOeQugYgetH4dTU5
+//https://medgrupo.freshdesk.com/a/tickets/filters/all_tickets
+//https://medgrupo.freshdesk.com/a/tickets/613248
+//https://developers.freshdesk.com/api/#reply_ticket
+//https://medgrupo.freshdesk.com/api/v2/ticket_fields
+//https://medgrupo.freshdesk.com/api/v2/tickets/613020/
+//https://medgrupo.freshdesk.com/api/v2/tickets/613020/conversations
 export class AppComponent {
   status: number;
   text: string;
@@ -27,19 +31,7 @@ export class AppComponent {
 
   constructor(private http: Http) {}
 
-  create(file: any = null) {
-    //https://medgrupo.freshdesk.com/a/tickets/filters/all_tickets
-    //https://medgrupo.freshdesk.com/a/tickets/613248
-    //https://developers.freshdesk.com/api/#reply_ticket
-
-    //https://medgrupo.freshdesk.com/api/v2/ticket_fields
-
-    //https://medgrupo.freshdesk.com/api/v2/tickets/613020/
-    //https://medgrupo.freshdesk.com/api/v2/tickets/613020/conversations
-
-    //para identificação usarmos o requester id que se torna o user_id, e também o email, não tendo API usar email somente
-
-    //criar entidade
+  createTicket(file: any = null) {
     let ticket: Ticket = {
       source: Source.Portal,
       description: "Descrição de teste",
@@ -57,7 +49,7 @@ export class AppComponent {
       }
     };
 
-    this.createTicket(ticket).subscribe(
+    this.createTicketService(ticket).subscribe(
       (res: any) => {
         this.result = "SUCCESS";
         this.status = res.status;
@@ -82,7 +74,12 @@ export class AppComponent {
   }
 
   createReply(file = null) {
-    this.createReplyHTTP().subscribe(
+    let data = {
+      user_id: this.requesterId,
+      body: "teste de réplica externa"
+    };
+
+    this.createReplyService(data).subscribe(
       (res: any) => {
         console.log(res);
         this.result = "SUCCESS";
@@ -103,22 +100,15 @@ export class AppComponent {
     );
   }
 
-  //colocar numa service
-  createReplyHTTP() {
+  createReplyService(data) {
     let url = FreshdeskConfig.baseURL + "tickets/" + this.ticketId + "/reply";
-
-    let data = {
-      user_id: this.requesterId,
-      body: "teste de réplica externa"
-    };
 
     return this.http
       .post(url, data, FreshdeskConfig.options)
       .map((res: any) => res);
   }
 
-  //colocar numa service
-  createTicket(data) {
+  createTicketService(data) {
     let url = FreshdeskConfig.baseURL + "tickets";
     return this.http
       .post(url, data, FreshdeskConfig.options)
