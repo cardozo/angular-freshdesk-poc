@@ -49,7 +49,11 @@ export class AppComponent {
       priority: Priority.Alta,
       status: Status.Open,
       group_id: 12000006437,
-      custom_fields: { cf_matricula: "214669" }
+      custom_fields: {
+        cf_matricula: "214669",
+        cf_ambiente:
+          "appVersion: 7.5.2 idAplicacao: 17 idDevice: 3 platform: iOS uuid: 8561BC1F-1316-4E6C-9547-8BAE7B92B6E5 osversion: 12.4.9"
+      }
     };
 
     // console.log(file.files[0]);
