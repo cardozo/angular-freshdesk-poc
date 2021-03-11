@@ -1,20 +1,5 @@
 import { Http, Headers, RequestOptions } from "@angular/http";
 
-export enum Priority {
-  Baixa,
-  Media,
-  Alta,
-  Urgente
-}
-
-export class Types {
-  static reclamacao: string = "Reclamação";
-  static solicitacao: string = "Solicitação";
-  static informacao: string = "Informação";
-  static elogio: string = "Elogio";
-  static sugestao: string = "Sugestão";
-}
-
 //Ref:https://support.freshdesk.com/support/solutions/articles/215517-how-to-find-your-api-key
 export class FreshdeskConfig {
   static domain = "medgrupo";
@@ -26,6 +11,21 @@ export class FreshdeskConfig {
     "Content-type": "multipart/form-data"
   });
   static options = new RequestOptions({ headers: FreshdeskConfig.headers });
+}
+
+export class Types {
+  static reclamacao: string = "Reclamação";
+  static solicitacao: string = "Solicitação";
+  static informacao: string = "Informação";
+  static elogio: string = "Elogio";
+  static sugestao: string = "Sugestão";
+}
+
+export enum Priority {
+  Baixa,
+  Media,
+  Alta,
+  Urgente
 }
 
 export enum Status {
@@ -42,4 +42,17 @@ export enum Source {
   Chat = 7,
   FeedbackWidget = 9,
   OutboundEmail = 10
+}
+
+export class Ticket {
+  source: number;
+  description: string;
+  name: string;
+  email: string;
+  type: string;
+  subject: string;
+  priority: number;
+  status: number;
+  group_id: number;
+  custom_fields: object;
 }
