@@ -56,6 +56,8 @@ export class FreshdeskComponent {
       group_id: 12000006437,
       custom_fields: {
         cf_matricula: "214669",
+        cf_osversion: "12.4.9",
+        cf_os: "iOS",
         cf_ambiente:
           "AppVersion: 7.5.2 AppId: 17 Device: 3 OS: iOS; OSVersion: 12.4.9 uuid: 8561BC1F-1316-4E6C-9547-8BAE7B92B6E5",
         cf_1: "MEDSOFT Pro",
