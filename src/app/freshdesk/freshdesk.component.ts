@@ -20,6 +20,8 @@ import {
 //https://medgrupo.freshdesk.com/a/tickets/613248
 //https://developers.freshdesk.com/api/#reply_ticket
 //https://medgrupo.freshdesk.com/api/v2/ticket_fields
+
+//dois gets
 //https://medgrupo.freshdesk.com/api/v2/tickets/613020/
 //https://medgrupo.freshdesk.com/api/v2/tickets/613020/conversations
 //
