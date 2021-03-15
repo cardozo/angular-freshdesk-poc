@@ -15,7 +15,7 @@ import {
   selector: "freshdesk",
   templateUrl: "./freshdesk.component.html"
 })
-
+//links úteis
 //https://medgrupo.freshdesk.com/a/tickets/filters/all_tickets
 //https://medgrupo.freshdesk.com/a/tickets/613248
 //https://developers.freshdesk.com/api/#reply_ticket
