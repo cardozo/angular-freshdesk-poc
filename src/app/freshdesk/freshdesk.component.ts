@@ -25,6 +25,10 @@ import {
 //https://medgrupo.freshdesk.com/api/v2/tickets/613020/
 //https://medgrupo.freshdesk.com/api/v2/tickets/613020/conversations
 //
+//Respostas:
+//Quais novas colunas SQL
+//ticketId,requesterId, status do ticket
+// Orientar funcionamento para trabalharmos em conjunto freshdesk
 export class FreshdeskComponent {
   status: number;
   text: string;
